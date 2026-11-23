@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="dsh-task-report">
+  <defs>
+    <linearGradient id="sheet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e8f1ff"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b6cf6"/>
+      <stop offset="1" stop-color="#17b3a3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 档案页 -->
+  <rect x="10" y="6" width="40" height="50" rx="4" fill="url(#sheet)" stroke="#2b6cf6" stroke-width="2"/>
+
+  <!-- 已完成的勾 -->
+  <g fill="none" stroke="#17b3a3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 18 l3.2 3.2 l5.4 -6"/>
+    <path d="M16 28 l3.2 3.2 l5.4 -6"/>
+  </g>
+
+  <!-- 条目线 -->
+  <g stroke="#2b6cf6" stroke-opacity="0.55" stroke-width="2.6" stroke-linecap="round">
+    <line x1="30" y1="18" x2="44" y2="18"/>
+    <line x1="30" y1="28" x2="44" y2="28"/>
+    <line x1="16" y1="38" x2="44" y2="38"/>
+    <line x1="16" y1="46" x2="38" y2="46"/>
+  </g>
+
+  <!-- 收口：右下角的归档角标 -->
+  <path d="M46 44 L58 44 L58 56 L52 51 L46 56 Z" fill="url(#accent)"/>
+</svg>

@@ -1,0 +1,46 @@
+{
+  "name": "dsh-task-report",
+  "version": "0.1.0",
+  "description": "任务档案：把进度、副作用、待办和收尾总结沉淀成可追溯的文件",
+  "private": false,
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "task",
+    "report",
+    "handoff"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": ">=0.0.1-rc <2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drdrdr666/dsh-task-report.git"
+  },
+  "author": "drdrdr666"
+}
