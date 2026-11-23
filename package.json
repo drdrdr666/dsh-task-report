@@ -1,7 +1,7 @@
 {
   "name": "dsh-task-report",
-  "version": "0.1.0",
-  "description": "任务档案：把进度、副作用、待办和收尾总结沉淀成可追溯的文件",
+  "version": "0.2.0",
+  "description": "任务档案：把进度、副作用、待办、未验证项和收尾总结沉淀成跨会话可追溯的文件；收尾时强制检查缺项，并自动扫描残留凭据、调试端口与写死的旧默认值",
   "private": false,
   "type": "module",
   "main": "./index.js",

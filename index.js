@@ -9,6 +9,7 @@
 
 import { defineTool } from '@deepseek-ai/dsh-tools';
 import * as store from './lib/store.js';
+import { scanEnvironment } from './lib/preflight.js';
 
 export const name = 'dsh-task-report';
 
@@ -94,8 +95,8 @@ export function apply(ctx) {
                             additionalProperties: true,
                             description:
                                 'update 时的增量：goal/phase/doing/blocked/null、done[{what,evidence}]、userActions[{action,why,ifNot}]、'
-                                + 'sideEffects{files,system,processes,external,credentials}、unverified[]、decisions[{what,why}]、'
-                                + 'value{did,helped,reuse[]}、next[]。数组字段为追加语义。',
+                                + 'sideEffects{files,system,processes,external,credentials}、unverified[]、coverage{covered[],uncovered[]}、'
+                                + 'decisions[{what,why}]、value{did,helped,reuse[]}、next[]。数组字段为追加语义。',
                         },
                     },
                     output: OUTPUT,
@@ -154,6 +155,10 @@ export function apply(ctx) {
                                     if (args.patch.sideEffects) state.sideEffectsTouched = true;
                                 }
                                 const missing = store.checkClose(state);
+                                // 环境自检：残留凭据 / 高危端口 / 写死的旧默认值。
+                                // 这些问题属于"以为已经交付"的时刻最容易漏的，直接挡在收尾门前。
+                                const envProblems = await scanEnvironment(workspace);
+                                for (const p of envProblems) missing.push(`副作用自检：${p}`);
                                 if (missing.length) {
                                     store.save(workspace, state);
                                     return { slug, missing };

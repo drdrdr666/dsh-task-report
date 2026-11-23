@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Task report",
-    "description": "Keeps a durable record for a task: what was done and how it was verified, side effects, what the user still has to do, what stayed unverified, and a closing summary of value.",
+    "description": "Keeps a durable record for one task: what was done and how it was verified, what was touched, what the user still has to do, what stayed unverified, and a closing summary of value. Closing is gated, so a task cannot quietly look finished.",
     "detail": "docs/DETAIL.md"
   }
 }
