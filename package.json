@@ -17,7 +17,8 @@
     "locale/*.json",
     "docs",
     "icon.svg",
-    "README.md"
+    "README.md",
+    "tests"
   ],
   "engines": {
     "node": ">=20"
