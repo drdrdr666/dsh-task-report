@@ -103,5 +103,15 @@ const ws = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-task-report-'));
     ok('list：列出任务并带阶段与收尾状态');
 }
 
+// [7] 显式空数组必须被记录下来（否则"确认过没有"会被当成"没传"）
+{
+    const st = store.emptyState('empty-arrays', '目标');
+    store.merge(st, { userActions: [], unverified: [], next: [] });
+    assert.ok(Array.isArray(st.userActions), 'userActions 传 [] 应被记录为 []');
+    assert.ok(Array.isArray(st.unverified), 'unverified 传 [] 应被记录为 []');
+    assert.ok(Array.isArray(st.next), 'next 传 [] 应被记录为 []');
+    ok('update：显式空数组被保留，与“没传”区分开');
+}
+
 console.log(`\n${passed} 组检查通过`);
 fs.rmSync(ws, { recursive: true, force: true });
