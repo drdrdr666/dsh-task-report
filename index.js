@@ -30,7 +30,10 @@ const OUTPUT = {
         if (value.markdown) return [{ type: 'text', text: value.markdown }];
         if (value.tasks) {
             const lines = value.tasks.length
-                ? value.tasks.map((t) => `- ${t.slug} | ${t.phase}${t.closed ? '（已收尾）' : ''} | ${t.goal || '(无目标)'}`)
+                ? value.tasks.map(
+                      (t) =>
+                          `- ${t.slug} | ${t.phase}${t.closed && t.phase !== '已收尾' ? '（已收尾）' : ''} | ${t.goal || '(无目标)'}`,
+                  )
                 : ['- 还没有任何任务档案'];
             return [{ type: 'text', text: lines.join('\n') }];
         }
